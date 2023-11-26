@@ -216,16 +216,19 @@ public partial class MainWindow : Window
             Icon = MsBox.Avalonia.Enums.Icon.Info,
             InputParams = new InputParams() { Label = "Passwd:", DefaultValue = "AAA", PasswordChar = "*" },
             ButtonDefinitions = buttons,
+            ShowInCenter = true,
+            Topmost = true,
+            CanResize = true,
         };
 
         var box = MessageBoxManager.GetMessageBoxCustom(CustomParam);
-        var result = await box.ShowAsync(); // OK
-        // var result = await box.ShowAsPopupAsync(this); // No loaded DialogHost have an Identifier property matching dialogIdentifier
+        //var result = await box.ShowAsync(); // OK
+        var result = await box.ShowAsPopupAsync(this); // OK,Fail:On box2 ShowAsPopupAsync
 
         if (result == "OK")
         {
-            var box2 = MessageBoxManager.GetMessageBoxStandard("Caption", $"Your passwd value is:{box.InputValue}", ButtonEnum.Ok);
-            await box2.ShowAsPopupAsync(this);
+           var box2 = MessageBoxManager.GetMessageBoxStandard("Caption", $"Your passwd value is:{box.InputValue}", ButtonEnum.Ok);
+           await box2.ShowAsync();
         }
     }
 
