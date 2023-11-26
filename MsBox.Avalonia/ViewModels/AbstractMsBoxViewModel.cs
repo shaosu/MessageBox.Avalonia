@@ -66,6 +66,7 @@ public abstract class AbstractMsBoxViewModel : INotifyPropertyChanged, IInput
             InputValue = @params.InputParams.DefaultValue;
             IsInputMultiline = @params.InputParams.Multiline;
             IsInputVisible = true;
+            InputPasswordChar = @params.InputParams.PasswordChar;
         }
     }
 
@@ -110,6 +111,7 @@ public abstract class AbstractMsBoxViewModel : INotifyPropertyChanged, IInput
     public abstract string InputValue { get; set; }
     public abstract bool IsInputMultiline { get; internal set; }
     public abstract bool IsInputVisible { get; internal set; }
+    public abstract string InputPasswordChar { get; internal set; }
 
     #endregion
 

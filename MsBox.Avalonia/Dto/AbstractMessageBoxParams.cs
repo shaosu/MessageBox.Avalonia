@@ -137,4 +137,8 @@ public class InputParams
     ///  Input multiline
     /// </summary>
     public bool Multiline { get; set; }
+    /// <summary>
+    ///  Input PasswordChar
+    /// </summary>
+    public string PasswordChar { get; set; } = string.Empty;
 }

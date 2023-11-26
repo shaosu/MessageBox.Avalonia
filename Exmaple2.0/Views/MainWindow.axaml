@@ -32,6 +32,8 @@
         <Button Name="Custom_Dialog"  Classes="View"  Click="Custom_Dialog_OnClick" Content="Custom dialog with image"/>
         <Button Name="Custom_PopUp"  Classes="View" Click="Custom_PopUp_OnClick" Content="Custom popup"/>
         <Button Name="Custom_Show_InputValue"  Classes="View" Click="Custom_Show_InputValue_OnClick" Content="Custom Show Input Value"/>
-    </StackPanel>
+		<Button Name="Standard_InputPasswdValue"  Classes="View" Click="InputPasswdValue_OnClick" Content="Standard Input Passwd Value"/>
+		<Button Name="Custom_InputPasswdValue"  Classes="View" Click="CustomInputPasswdValue_OnClick" Content="Custom Input Passwd Value"/>
+	</StackPanel>
 
 </Window>

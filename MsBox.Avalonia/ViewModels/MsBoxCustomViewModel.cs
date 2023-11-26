@@ -36,6 +36,7 @@ public class MsBoxCustomViewModel : AbstractMsBoxViewModel, ISetFullApi<string>
     public override string InputValue { get; set; }
     public override bool IsInputMultiline { get; internal set; }
     public override bool IsInputVisible { get; internal set; }
+    public override string InputPasswordChar { get; internal set; }
     #endregion
 
     public RelayCommand ButtonClickCommand { get; }

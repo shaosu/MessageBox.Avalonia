@@ -182,6 +182,52 @@ public partial class MainWindow : Window
             await box2.ShowAsPopupAsync(this);
         }
     }
+    private async void InputPasswdValue_OnClick(object sender, RoutedEventArgs e)
+    {
+        var Param = new MessageBoxStandardParams
+        {
+            ContentTitle = "Input Passwd Value",
+            ContentMessage = $"Please enter a string",
+            InputParams = new InputParams() { Label = "Passwd:", DefaultValue = "AAA" ,PasswordChar="*"},
+            Icon = MsBox.Avalonia.Enums.Icon.None,
+            ShowInCenter = true,
+        };
+
+        var box = MessageBoxManager.GetMessageBoxStandard(Param);
+        // var result = await box.ShowAsync(); // OK
+        var result = await box.ShowAsPopupAsync(this); // OK
+
+        if (result == ButtonResult.Ok)
+        {
+            var box2 = MessageBoxManager.GetMessageBoxStandard("Caption", $"Your passwd value is:{box.InputValue}", ButtonEnum.Ok);
+            await box2.ShowAsPopupAsync(this);
+        }
+    }
+
+    private async void CustomInputPasswdValue_OnClick(object sender, RoutedEventArgs e)
+    {
+        ButtonDefinition[] buttons = new ButtonDefinition[2];
+        buttons[0] = new ButtonDefinition() { IsDefault = true, Name = "OK" };
+        buttons[1] = new ButtonDefinition() { IsCancel = true, Name = "Cancel" };
+        var CustomParam = new MessageBoxCustomParams
+        {
+            ContentTitle = "Custom Input Passwd Value",
+            ContentMessage = $"Please enter a string",
+            Icon = MsBox.Avalonia.Enums.Icon.Info,
+            InputParams = new InputParams() { Label = "Passwd:", DefaultValue = "AAA", PasswordChar = "*" },
+            ButtonDefinitions = buttons,
+        };
+
+        var box = MessageBoxManager.GetMessageBoxCustom(CustomParam);
+        var result = await box.ShowAsync(); // OK
+        // var result = await box.ShowAsPopupAsync(this); // No loaded DialogHost have an Identifier property matching dialogIdentifier
+
+        if (result == "OK")
+        {
+            var box2 = MessageBoxManager.GetMessageBoxStandard("Caption", $"Your passwd value is:{box.InputValue}", ButtonEnum.Ok);
+            await box2.ShowAsPopupAsync(this);
+        }
+    }
 
     private async void Custom_PopUp_OnClick(object sender, RoutedEventArgs e)
     {
